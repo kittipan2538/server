@@ -213,7 +213,7 @@ app.post('/postreports',(req,res)=>{
     if (err) {
 
       console.log(err);
-    } else {
+    } else { 
       res.send(result);
     }
   })
