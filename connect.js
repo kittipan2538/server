@@ -143,7 +143,7 @@ app.post('/postapproved',(req,res)=>{
   console.log("143")
   db.query("UPDATE guide SET adminID = ? , approved= ? WHERE guide.userID= userID",
   [adminID,approved,userID],(err,result)=>{
-    if (err) {
+    if (err) { 
 
       console.log(err);
     } else {
