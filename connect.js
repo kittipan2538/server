@@ -137,13 +137,43 @@ app.get('/getcertificate',(req,res)=>{
 })
 
 app.post('/postapproved',(req,res)=>{
+  console.log("143")
   const approved = req.body.approved;
   const adminID = req.body.adminID;
   const userID = req.body.userID;
-  console.log("143")
-  db.query("UPDATE guide SET adminID = ? , approved= ? WHERE guide.userID= ?",
+  db.query("UPDATE guide SET adminID = ? , approved= ? WHERE guide.userID = ?",
   [adminID,approved,userID],(err,result)=>{
-    if (err) { 
+    if (err) {
+
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  })
+})
+
+app.post('/postreports',(req,res)=>{
+  console.log("156")
+  const statususer = req.body.statususer;
+  const userID = req.body.userID;
+  db.query("UPDATE user SET statususer = ? WHERE user.userID = ?",
+  [statususer,userID],(err,result)=>{
+    if (err) {
+
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  })
+})
+
+app.post('/postblacklist',(req,res)=>{
+  console.log("171")
+  const statususer = req.body.statususer;
+  const userID = req.body.userID;
+  db.query("UPDATE user SET statususer = ? WHERE user.userID = ?",
+  [statususer,userID],(err,result)=>{
+    if (err) {
 
       console.log(err);
     } else {
@@ -185,7 +215,7 @@ app.get('/blacklistname',(req,res)=>{
 })
 
 app.get('/getreports',(req,res)=>{
-  db.query("SELECT * FROM report INNER JOIN tour ON report.tourID= tour.tourID  INNER JOIN customer ON customer.userID= tour.userID",(err,result)=>{
+  db.query("SELECT * FROM report INNER JOIN tour ON report.tourID= tour.tourID INNER JOIN customer ON customer.userID= tour.userID",(err,result)=>{
     if (err) {
       console.log(err);
     } else {
@@ -203,36 +233,3 @@ app.get('/getapproveddetail',(req,res)=>{
     }
   })
 })
-
-app.post('/postreports',(req,res)=>{
-  console.log("156")
-  const statususer = req.body.statususer;
-  const userID = req.body.userID;
-  db.query("UPDATE user SET statususer = ? WHERE user.userID = ?",
-  [statususer,userID],(err,result)=>{
-    if (err) {
-
-      console.log(err);
-    } else { 
-      res.send(result);
-    }
-  })
-})
-
-app.post('/postblacklist',(req,res)=>{
-  console.log("156")
-  const statususer = req.body.statususer;
-  const userID = req.body.userID;
-  db.query("UPDATE user SET statususer = ? WHERE user.userID = ?",
-  [statususer,userID],(err,result)=>{
-    if (err) {
-
-      console.log(err);
-    } else {
-      res.send(result);
-    }
-  })
-}) 
-
-
-
