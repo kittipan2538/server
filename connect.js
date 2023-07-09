@@ -217,7 +217,7 @@ app.get('/blacklistname',(req,res)=>{
 app.get('/getreports',(req,res)=>{
   db.query("SELECT * FROM report INNER JOIN tour ON report.tourID= tour.tourID INNER JOIN customer ON customer.userID= tour.userID",(err,result)=>{
     if (err) {
-      console.log(err);
+      console.log(err); 
     } else {
       res.send(result);
     }
