@@ -141,7 +141,7 @@ app.post('/postapproved',(req,res)=>{
   const adminID = req.body.adminID;
   const userID = req.body.userID;
   console.log("143")
-  db.query("UPDATE guide SET adminID = ? , approved= ? WHERE guide.userID= userID",
+  db.query("UPDATE guide SET adminID = ? , approved= ? WHERE guide.userID= ?",
   [adminID,approved,userID],(err,result)=>{
     if (err) { 
 
