@@ -204,5 +204,35 @@ app.get('/getapproveddetail',(req,res)=>{
   })
 })
 
+app.post('/postreports',(req,res)=>{
+  console.log("156")
+  const statususer = req.body.statususer;
+  const userID = req.body.userID;
+  db.query("UPDATE user SET statususer = ? WHERE user.userID = ?",
+  [statususer,userID],(err,result)=>{
+    if (err) {
+
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  })
+})
+
+app.post('/postblacklist',(req,res)=>{
+  console.log("156")
+  const statususer = req.body.statususer;
+  const userID = req.body.userID;
+  db.query("UPDATE user SET statususer = ? WHERE user.userID = ?",
+  [statususer,userID],(err,result)=>{
+    if (err) {
+
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  })
+})
+
 
 
