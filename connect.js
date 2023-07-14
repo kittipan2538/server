@@ -84,7 +84,7 @@ app.get('/guide',(req, res)=>{
 })
 
 app.get('/getblacklistname',(req,res)=>{
-  db.query("SELECT * FROM customer",(err,result)=>{
+  db.query("SELECT * FROM user",(err,result)=>{
     if (err) {
       console.log(err);
     } else {
