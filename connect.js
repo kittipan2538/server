@@ -225,7 +225,7 @@ app.get('/getreports',(req,res)=>{
 })
 
 app.get('/getapproveddetail',(req,res)=>{
-  db.query("SELECT * FROM guide INNER JOIN user ON guide.userID = user.userID INNER JOIN customer ON customer.userID = user.userID",(err,result)=>{
+  db.query("SELECT * FROM guide INNER JOIN user ON guide.userID = user.userID",(err,result)=>{
     if (err) {
       console.log(err);
     } else {
