@@ -202,7 +202,7 @@ app.post('/getfnametobl',(req,res)=>{
       res.send(result);
     }
   })
-}) 
+})  
 
 app.get('/blacklistname',(req,res)=>{
   db.query("SELECT * FROM blacklist INNER JOIN user ON blacklist.userID = user.userID",(err,result)=>{
