@@ -277,3 +277,17 @@ app.delete('/deleteguide',(req, res)=>{
     }
   })
 })
+
+app.post('/poststatusguide',(req,res)=>{
+  const statusguide = req.body.statusguide;
+  const userID = req.body.userID;
+  db.query("UPDATE user SET statusguide = ? WHERE user.userID = ?",
+  [statusguide,userID],(err,result)=>{
+    if (err) {
+
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  })
+})
