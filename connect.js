@@ -188,7 +188,7 @@ app.get('/getapproved',(req,res)=>{
       console.log(err);
     } else {
       res.send(result);
-    }
+    } 
   })
 })
 app.post('/getfnametobl',(req,res)=>{
