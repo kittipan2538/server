@@ -233,3 +233,47 @@ app.get('/getapproveddetail',(req,res)=>{
     }
   })
 }) 
+
+app.post('/postaction',(req,res)=>{
+  console.log("238")
+  const action = req.body.action;
+  const adminID = req.body.adminID;
+  const userID = req.body.userID;
+  console.log("238")
+  db.query("INSERT INTO admin_action(adminID,action,userID) values (?,?,?)",
+  [adminID,action,userID],(err,result)=>{
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    } 
+  })
+})
+
+app.post('/postactionnot',(req,res)=>{
+  console.log("238")
+  const actionnot = req.body.actionnot;
+  const adminID = req.body.adminID;
+  const userID = req.body.userID;
+  console.log("238")
+  db.query("INSERT INTO admin_action(adminID,action,userID) values (?,?,?)",
+  [adminID,actionnot,userID],(err,result)=>{
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  })
+})
+
+app.delete('/deleteguide',(req, res)=>{
+  const userID = req.body.userID;
+  console.log(userID)
+  db.query("DELETE FROM guide WHERE guide.userID = ?",[userID] ,(err, result)=>{
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  })
+})
